@@ -1,0 +1,62 @@
+int cont = 0;
+int v1 =13;
+int v2 = 10;
+int am1 = 12;
+int am2 = 50;
+int r1 = 11;
+int r2 = 51;
+
+void setup(){
+  Serial.begin(9600);
+  noInterrupts();
+  DDRB = DDRB | B11111111;
+  cli();
+  TCCR1B = 0; TCCR1A = 0;//activa
+  TCCR1B |= (1 << CS12);//preescala
+  TCNT1 = 3036; // para que la interrupción dure 1 segundo
+  TIMSK1 |= (1 << TOIE1);//modo del timer
+  sei();
+  interrupts();
+  pinMode(v1, OUTPUT);
+  pinMode(am1, OUTPUT);
+  pinMode(r1, OUTPUT);
+  pinMode(v2, OUTPUT);
+  pinMode(am2, OUTPUT);
+  pinMode(r2, OUTPUT);
+}
+
+ISR(TIMER1_OVF_vect){
+ cont = cont +1;
+ Serial.println(cont);
+}
+
+
+void loop() {
+  if (cont == 13)cont = 0;
+  else{
+    if (cont > 11){
+      digitalWrite(v2, LOW);
+      digitalWrite(am2, HIGH);
+    }else{
+      if( cont > 6){
+        digitalWrite(am1, LOW);
+        digitalWrite(r1, HIGH);
+        digitalWrite(r2, LOW);
+        digitalWrite(v2, HIGH);
+        
+      }else{
+        if(cont > 5){
+          digitalWrite(v1, LOW);
+          digitalWrite(am1, HIGH);
+        }else{
+          digitalWrite(v1, HIGH);
+          digitalWrite(r2, HIGH);
+          digitalWrite(v2, LOW);
+          digitalWrite(am1, LOW); 
+          digitalWrite(am2, LOW);
+          digitalWrite(r1, LOW); 
+        }
+      }
+    }
+  }
+ }
