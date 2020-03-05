@@ -1,0 +1,29 @@
+int cont = 0;
+int v1 =13;
+
+void setup(){
+  Serial.begin(9600);
+  noInterrupts();
+  cli();
+  DDRD &= ~(1 << DDD1);
+  PORTD |= (1 << PORTD1);
+  EICRA |= (1 << ISC10);
+  EIMSK |= (1 << INT1);
+  sei();
+  interrupts();
+  pinMode(v1, OUTPUT);
+}
+
+ISR(INT1_vect){
+ cont = cont +1;
+ digitalWrite(v1, HIGH);
+ Serial.println(cont);
+}
+
+
+void loop() {
+  digitalWrite(v1, HIGH);
+  delay(1000);
+  digitalWrite(v1, LOW);
+  delay(1000);
+ }
