@@ -1,0 +1,68 @@
+int verde = 13;
+int ama = 12;
+int rojo = 11;
+int verde2 = 10;
+int tiempo = 250;
+//int ama2 = 7;
+//int rojo2 = 6;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(verde, OUTPUT);
+  pinMode(ama, OUTPUT);
+  pinMode(rojo, OUTPUT);
+  pinMode(verde2, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, HIGH);
+  digitalWrite(rojo, HIGH);
+  digitalWrite(verde2, HIGH);
+  delay(tiempo); //1
+  digitalWrite(verde, LOW);
+  delay(tiempo); //2
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, LOW);
+  delay(tiempo); //3
+  digitalWrite(verde, LOW);
+  delay(tiempo); //4
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, HIGH);
+  digitalWrite(rojo, LOW);
+  delay(tiempo); //5
+  digitalWrite(verde, LOW);
+  delay(tiempo); //6
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, LOW);
+  delay(tiempo); //
+  digitalWrite(verde, LOW);
+  delay(tiempo); //8
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, HIGH);
+  digitalWrite(rojo, HIGH);
+  digitalWrite(verde2, LOW);
+  delay(tiempo); //1
+  digitalWrite(verde, LOW);
+  delay(tiempo); //2
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, LOW);
+  delay(tiempo); //3
+  digitalWrite(verde, LOW);
+  delay(tiempo); //4
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, HIGH);
+  digitalWrite(rojo, LOW);
+  delay(tiempo); //5
+  digitalWrite(verde, LOW);
+  delay(tiempo); //6
+  digitalWrite(verde, HIGH);
+  digitalWrite(ama, LOW);
+  delay(tiempo); //
+  digitalWrite(verde, LOW);
+  delay(tiempo);
+  
+}
