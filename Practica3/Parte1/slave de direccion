@@ -1,0 +1,33 @@
+#include <Wire.h>
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  Wire.begin(1);
+  Wire.onReceive(receiveEvent);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  delay(500);
+  
+}
+
+void receiveEvent(int i){
+  int izq;
+  int der;
+ 
+  if (Wire.available() == 2)
+  {
+    // Leemos el primero que será el izq
+    izq = Wire.read();  
+    der = Wire.read(); 
+    Serial.println(izq);
+    Serial.println(der);
+  }
+  
+  digitalWrite(11,izq);
+  digitalWrite(10,der);
+ 
+}
