@@ -1,0 +1,35 @@
+#include <Wire.h>
+int vel;
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+  Wire.begin();
+  pinMode(A0,INPUT);
+  pinMode(A1,INPUT);
+  pinMode(A2,INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int X = analogRead(A0);
+  int Y = analogRead(A1);
+  int Z = analogRead(A2);
+  Serial.print("X=");
+  Serial.print(X);
+  Serial.print("\t Y=");
+  Serial.print(Y);
+  Serial.print("\t Z=");
+  Serial.println(Z);
+
+  if(X > 415) X=415;
+  if(X < 300) X=300;
+
+  vel = map(X,300,415,0,255);
+  //Serial.println(vel);
+  Wire.beginTransmission(1);
+  Wire.write(vel);
+  Wire.endTransmission();
+  
+  delay(200);
+  
+}
