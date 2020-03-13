@@ -1,0 +1,46 @@
+#include <Wire.h>
+  int vel = 0;
+  
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  Wire.begin(1);
+  Wire.onReceive(receiveEvent);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  delay(500);
+  
+}
+
+void receiveEvent(int i){
+ int x;
+
+  if (Wire.available() == 1){
+    // Leemos el valor de X
+    x = Wire.read();   
+  }
+  Serial.print("x = ");
+  Serial.print(x);
+
+  vel = map(x,0,255,-255,255);
+  
+  Serial.print(" vel = ");
+  Serial.println(vel);
+
+  /*vel2 = map(min(max(x,260),430), 260, 430, -255, 255);
+  Serial.print(" vel2 = ");
+  Serial.println(vel2);*/
+
+  if (vel > 0  ){
+      Serial.println("11");
+      analogWrite(11,vel);
+  }else{
+    Serial.println("10");
+      vel = vel*-1;
+      analogWrite(10,vel);
+  } 
+}
