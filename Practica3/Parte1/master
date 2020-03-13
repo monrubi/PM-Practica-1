@@ -1,0 +1,31 @@
+#include <Wire.h>
+
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+  Wire.begin();
+  pinMode(A0, INPUT);
+  pinMode(A1,INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int valI = analogRead(A1);
+  int valD = analogRead(A0);
+  //Serial.println(valI);
+  // Serial.println(valD);
+
+  int izq= 1;
+  int der = 1;
+  
+  
+  if (valI > 900){ izq = 0;}
+  if (valD > 900){ der = 0;}
+  
+  Wire.beginTransmission(1);
+  Wire.write(izq);
+  Wire.write(der);
+  Wire.endTransmission();
+  //delay(100);
+  
+}
