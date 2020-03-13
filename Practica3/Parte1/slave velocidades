@@ -1,0 +1,50 @@
+#include <Wire.h>
+  int vel = 0;
+  
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  Wire.begin(1);
+  Wire.onReceive(receiveEvent);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  delay(500);
+  
+}
+
+void receiveEvent(int i){
+  int up;
+  int down;
+ 
+  if (Wire.available() == 2)
+  {
+    // Leemos el primero que será el incremento
+    up = Wire.read();   
+    down = Wire.read();
+  }
+
+  if(up == 0 && vel < 255){
+    vel++;
+  }
+  if(down == 0  && vel > -255){
+    vel--;
+  }
+
+  Serial.println(vel);
+  if (up == 0 && down == 0){
+    digitalWrite(11,0);
+    digitalWrite(10,0);
+  }else{
+        if (vel > 0  ){
+      analogWrite(11,vel);
+    }else{
+      int vel2 = vel*-1;
+      analogWrite(10,vel2);
+    }
+  }
+ 
+}
