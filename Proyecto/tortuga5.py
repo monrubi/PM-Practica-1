@@ -176,20 +176,20 @@ if __name__ == '__main__':
         position_topic = "/turtle5/pose"
         pose_subscriber = rospy.Subscriber(position_topic, Pose, myCallback)
 
-        position_topic = "/turtle1/pose"
-        pose_subscriber = rospy.Subscriber(position_topic, Pose, poseCallback1)
+        position_topic1 = "/turtle1/pose"
+        pose_subscriber = rospy.Subscriber(position_topic1, Pose, poseCallback1)
 
-        position_topic = "/turtle2/pose"
-        pose_subscriber = rospy.Subscriber(position_topic, Pose, poseCallback2)
+        position_topic2 = "/turtle2/pose"
+        pose_subscriber = rospy.Subscriber(position_topic2, Pose, poseCallback2)
 
-        position_topic = "/turtle3/pose"
-        pose_subscriber = rospy.Subscriber(position_topic, Pose, poseCallback3)
+        position_topic3 = "/turtle3/pose"
+        pose_subscriber = rospy.Subscriber(position_topic3, Pose, poseCallback3)
 
-        position_topic = "/turtle4/pose"
-        pose_subscriber = rospy.Subscriber(position_topic, Pose, poseCallback4)
+        position_topic4 = "/turtle4/pose"
+        pose_subscriber = rospy.Subscriber(position_topic4, Pose, poseCallback4)
 
-        position_topic = "/turtle6/pose"
-        pose_subscriber = rospy.Subscriber(position_topic, Pose, poseCallback6)
+        position_topic6 = "/turtle6/pose"
+        pose_subscriber = rospy.Subscriber(position_topic6, Pose, poseCallback6)
 
 
         time.sleep(2.0)
