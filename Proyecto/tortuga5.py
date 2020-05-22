@@ -64,7 +64,7 @@ def orientate (angle):
     velocity_message = Twist()
     cmd_vel_topic = '/turtle5/cmd_vel'
     desired_angle_goal = theta + angle
-    ka = 4.0
+    ka = 2.0
 
     while(True):
 
@@ -90,7 +90,7 @@ def for_the_horde(xgoal,ygoal):
 
     distance = abs(math.sqrt(((xgoal-x)**2)+((ygoal-y)**2)))
     kv = 0.35
-    ka = 8
+    ka = 4
     angle = 30 * (2*math.pi/360)
 
     while(True):   	 
@@ -120,7 +120,7 @@ def for_the_horde(xgoal,ygoal):
                 dtheta = 0
 
             angular_speed = ka * (dtheta)
-            velocity_message.linear.x = linear_speed
+            velocity_message.linear.x = 0.35
             velocity_message.angular.z = angular_speed
             velocity_publisher.publish(velocity_message)
 
