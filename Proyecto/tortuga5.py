@@ -62,7 +62,7 @@ def orientate (angle):
     global theta
 
     velocity_message = Twist()
-    cmd_vel_topic = '/turtle1/cmd_vel'
+    cmd_vel_topic = '/turtle5/cmd_vel'
     desired_angle_goal = theta + angle
     ka = 4.0
 
@@ -86,7 +86,7 @@ def for_the_horde(xgoal,ygoal):
     global y
     global theta  
     velocity_message = Twist()
-    cmd_vel_topic = '/turtle1/cmd_vel'
+    cmd_vel_topic = '/turtle5/cmd_vel'
 
     distance = abs(math.sqrt(((xgoal-x)**2)+((ygoal-y)**2)))
     kv = 0.7
