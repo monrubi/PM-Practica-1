@@ -89,9 +89,9 @@ def for_the_horde(xgoal,ygoal):
     cmd_vel_topic = '/turtle5/cmd_vel'
 
     distance = abs(math.sqrt(((xgoal-x)**2)+((ygoal-y)**2)))
-    kv = 0.7
+    kv = 0.35
     ka = 8
-    angle = 10 * (2*math.pi/360)
+    angle = 30 * (2*math.pi/360)
 
     while(True):   	 
         distance = abs(math.sqrt(((xgoal-x)**2)+((ygoal-y)**2)))
@@ -125,6 +125,9 @@ def for_the_horde(xgoal,ygoal):
             velocity_publisher.publish(velocity_message)
 
         else:
+            velocity_message.linear.x = 0.0
+            velocity_message.angular.z = 0.0
+            velocity_publisher.publish(velocity_message)
             if lefty:
                 orientate(angle)
             else:
@@ -156,7 +159,7 @@ def sniffin():
         distance = abs(math.sqrt(((exis[i]-x)**2)+((yes[i]-y)**2)))
         if distance < 1.4:
             obstacle_angle = math.atan2(yes[i], exis[i])
-            if abs(obstacle_angle-theta) < 8(2*math.pi/360):
+            if abs(obstacle_angle-theta) < 0.7:
                 despejado = False
         i+=1
     return despejado
@@ -190,7 +193,7 @@ if __name__ == '__main__':
 
 
         time.sleep(2.0)
-        orientate(2*math.pi/2)
+        orientate(2*math.pi/-2)
         for_the_horde(4,10)
 
 
