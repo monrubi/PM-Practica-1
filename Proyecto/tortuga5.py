@@ -194,7 +194,7 @@ if __name__ == '__main__':
 
         time.sleep(2.0)
         orientate(2*math.pi/-2)
-        for_the_horde(4,10)
+        for_the_horde(2.5,10)
 
 
 
